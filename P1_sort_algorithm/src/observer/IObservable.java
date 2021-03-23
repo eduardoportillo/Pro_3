@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package observer;
 
-/**
- *
- * @author Portillo
- */
 public interface IObservable {
-    
+    public void register(IObserver observer);
+    public void remove(IObserver observer);
+    public void notifyObservers(int contadorCiclo);
 }
