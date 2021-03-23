@@ -27,10 +27,8 @@ public class JPanelInit extends JPanel implements IObserver{
 
     private int[] filas;
     private Graphics _g;
-    private JPanel instance;
 
     public JPanelInit() {
-        instance = this;
         this.setBounds(600, 400, 0, 0);
         this.setLayout(null);
         filas = new int[x];
@@ -134,12 +132,7 @@ public class JPanelInit extends JPanel implements IObserver{
         btnOrdenar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                filas = new int[x];
-                generarNroAleatorio();
-                instance.repaint(); 
-                Bubblesort bubbleSort = new Bubblesort();
-                bubbleSort.vueltas = 0;
-                log.info("Se oprime el botón: Reset");
+                actionPerformed1();
             }
         });
 
@@ -147,10 +140,19 @@ public class JPanelInit extends JPanel implements IObserver{
         this.add(btnOrdenar);
     }
     
+    public void actionPerformed1(){
+        filas = new int[x];
+                generarNroAleatorio();
+                this.repaint(); 
+                Bubblesort bubbleSort = new Bubblesort();
+                bubbleSort.vueltas = 0;
+                log.info("Se oprime el botón: Reset");
+    }
+    
     @Override
     public void update(int contadorCiclo) {
-        instance.repaint();
-        conteoCiclo.setText(contadorCiclo+"");
+        repaint();
+        //conteoCiclo.setText(contadorCiclo+"");
     }
     
 }
