@@ -13,6 +13,8 @@ public class JFrameInit extends JFrame{
     
         initPanel(new JPanelInit());
         
+        this.validate();
+        
     }
     
     private void initPanel(JPanelInit panel){
