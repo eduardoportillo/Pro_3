@@ -9,8 +9,12 @@ import javax.swing.JPanel;
 import observer.IObserver;
 import observer.ObserverList;
 import ordenamiento.Bubblesort;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class JPanelInit extends JPanel implements IObserver{
+    
+    private static final Logger log = LogManager.getRootLogger();
     
     private int x = 300; //cantida filas
     private int max_y = 400; //cantidad maxima en y
@@ -37,7 +41,7 @@ public class JPanelInit extends JPanel implements IObserver{
         this.add(info);
         
         conteoCiclo = new JLabel();
-        conteoCiclo.setBounds(520, 280, 100, 100);
+        conteoCiclo.setBounds(370, 280, 100, 100);
         conteoCiclo.setVisible(true);
         this.add(conteoCiclo);
         
@@ -49,6 +53,8 @@ public class JPanelInit extends JPanel implements IObserver{
         crearBtnReset();
         this.validate();
         ObserverList.getInstance().register(this);
+        
+        
     }
 
     private void generarNroAleatorio() {
@@ -99,6 +105,7 @@ public class JPanelInit extends JPanel implements IObserver{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Bubblesort().ordenar(filas, "desc");
+                log.info("Se oprime el botón: Bubblesort desc");
             }
         });
 
@@ -111,9 +118,9 @@ public class JPanelInit extends JPanel implements IObserver{
         btnOrdenar.setText("Bubblesort asc");
         btnOrdenar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                //Log al apretar el Boton 
+            public void actionPerformed(ActionEvent e) { 
                 new Bubblesort().ordenar(filas, "asc");
+                log.info("Se oprime el botón: Bubblesort asc");
             }
         });
 
@@ -129,8 +136,10 @@ public class JPanelInit extends JPanel implements IObserver{
             public void actionPerformed(ActionEvent e) {
                 filas = new int[x];
                 generarNroAleatorio();
-                instance.repaint();
-
+                instance.repaint(); 
+                Bubblesort bubbleSort = new Bubblesort();
+                bubbleSort.vueltas = 0;
+                log.info("Se oprime el botón: Reset");
             }
         });
 

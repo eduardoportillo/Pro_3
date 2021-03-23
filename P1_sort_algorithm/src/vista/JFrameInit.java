@@ -1,8 +1,13 @@
 package vista;
 
 import javax.swing.JFrame;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class JFrameInit extends JFrame{
+    
+    private static final Logger log = LogManager.getRootLogger();
+    
     public JFrameInit (){
         this.setSize(620,400);     
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);       
@@ -12,7 +17,7 @@ public class JFrameInit extends JFrame{
         this.setResizable(false);
     
         initPanel(new JPanelInit());
-        
+        log.debug("corre el constructor de: "+JFrameInit.class.getName());
         this.validate();
         
     }
