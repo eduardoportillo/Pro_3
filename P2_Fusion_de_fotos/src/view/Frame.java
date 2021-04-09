@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-/**
- *
- * @author Portillo
- */
-public class Frame {
-    
+import javax.swing.JFrame;
+
+public class Frame extends JFrame {
+
+    public Frame() {
+        this.setSize(895, 585); // Tamanho del frame
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // Para cerrar la ventana en close
+        this.setLocationRelativeTo(null); // Para habrir el frame al medio
+        this.setVisible(true);
+        this.setTitle("Imagenes");
+        this.setResizable(false);
+        this.repaint();
+    }
 }
