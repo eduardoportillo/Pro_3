@@ -86,7 +86,7 @@ public class Panel extends JPanel implements PropertyChangeListener {
                 File abreimg2 = fileChooser.getSelectedFile();
                 instance.img2 = new Imagen(abreimg2);
                 instance.img2.toPixeles();
-                
+                log.info("se introduce img2");
             }
         });
 
