@@ -34,10 +34,36 @@ public class Panel extends JPanel implements PropertyChangeListener {
         this.repaint();
         this.validate();
         
-        crearBtnImg1();
-        crearBtnImg2();
-        crearBtnGenerar();
+//        crearBtnImg1();
+//        crearBtnImg2();
+//        crearBtnGenerar();
     }
+    
+    public void setImg1(Imagen img1) {
+        this.img1 = img1;
+    }
+
+    public void setImg2(Imagen img2) {
+        this.img2 = img2;
+    }
+
+    public void setImg3(Imagen img3) {
+        this.img3 = img3;
+    }
+    
+    public Imagen getImg1() {
+        return img1;
+    }
+
+    public Imagen getImg2() {
+        return img2;
+    }
+
+    public Imagen getImg3() {
+        return img3;
+    }
+
+    
 
     @Override
     public void paint(Graphics g) {
@@ -48,68 +74,68 @@ public class Panel extends JPanel implements PropertyChangeListener {
         }
     }
 
-    public void crearBtnImg1() {
-        JButton btnOrdenar = new JButton();
-        btnOrdenar.setText("Import img 1");
-        btnOrdenar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+//    public void crearBtnImg1() {
+//        JButton btnOrdenar = new JButton();
+//        btnOrdenar.setText("Import img 1");
+//        btnOrdenar.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                JFileChooser fileChooser = new JFileChooser();
+//                FileFilter filter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png");
+//                fileChooser.addChoosableFileFilter(filter);
+//                fileChooser.setFileFilter(filter);
+//                int seleccion = fileChooser.showOpenDialog(instance);
+//                File abreimg1 = fileChooser.getSelectedFile();
+//                instance.img1 = new Imagen(abreimg1);
+//                instance.img1.toPixeles();
+//                log.info("se introduce img1");
+//            }
+//        });
+//
+//        btnOrdenar.setBounds(10, 10, 110, 40);
+//        this.add(btnOrdenar);
+//    }
 
-                JFileChooser fileChooser = new JFileChooser();
-                FileFilter filter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png");
-                fileChooser.addChoosableFileFilter(filter);
-                fileChooser.setFileFilter(filter);
-                int seleccion = fileChooser.showOpenDialog(instance);
-                File abreimg1 = fileChooser.getSelectedFile();
-                instance.img1 = new Imagen(abreimg1);
-                instance.img1.toPixeles();
-                log.info("se introduce img1");
-            }
-        });
+//    public void crearBtnImg2() {
+//        JButton crearBtnImg2 = new JButton();
+//        crearBtnImg2.setText("Import Img 2");
+//        crearBtnImg2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                JFileChooser fileChooser = new JFileChooser();
+//                FileFilter filter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png");
+//                fileChooser.addChoosableFileFilter(filter);
+//                fileChooser.setFileFilter(filter);
+//                int seleccion = fileChooser.showOpenDialog(instance);
+//                File abreimg2 = fileChooser.getSelectedFile();
+//                instance.img2 = new Imagen(abreimg2);
+//                instance.img2.toPixeles();
+//                log.info("se introduce img2");
+//            }
+//        });
+//
+//        crearBtnImg2.setBounds(130, 10, 110, 40);
+//        this.add(crearBtnImg2);
+//    }
 
-        btnOrdenar.setBounds(10, 10, 110, 40);
-        this.add(btnOrdenar);
-    }
-
-    public void crearBtnImg2() {
-        JButton crearBtnImg2 = new JButton();
-        crearBtnImg2.setText("Import Img 2");
-        crearBtnImg2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                JFileChooser fileChooser = new JFileChooser();
-                FileFilter filter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png");
-                fileChooser.addChoosableFileFilter(filter);
-                fileChooser.setFileFilter(filter);
-                int seleccion = fileChooser.showOpenDialog(instance);
-                File abreimg2 = fileChooser.getSelectedFile();
-                instance.img2 = new Imagen(abreimg2);
-                instance.img2.toPixeles();
-                log.info("se introduce img2");
-            }
-        });
-
-        crearBtnImg2.setBounds(130, 10, 110, 40);
-        this.add(crearBtnImg2);
-    }
-
-    public void crearBtnGenerar() {
-        JButton btnOrdenar = new JButton();
-        btnOrdenar.setText("Generar");
-        btnOrdenar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                instance.img3 = new Imagen(img1, img2);
-                instance.img3.addObserver(instance);
-                instance.img3.toPixeles();
-                log.info("se genera img3");
-            }
-        });
-
-        btnOrdenar.setBounds(400, 10, 100, 40);
-        this.add(btnOrdenar);
-    }
+//    public void crearBtnGenerar() {
+//        JButton btnOrdenar = new JButton();
+//        btnOrdenar.setText("Generar");
+//        btnOrdenar.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                instance.img3 = new Imagen(img1, img2);
+//                instance.img3.addObserver(instance);
+//                instance.img3.toPixeles();
+//                log.info("se genera img3");
+//            }
+//       });
+//
+//        btnOrdenar.setBounds(400, 10, 100, 40);
+//        this.add(btnOrdenar);
+//    }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

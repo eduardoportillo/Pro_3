@@ -12,8 +12,8 @@ public class Main {
         
         log.info("inicia: P2_Fusion_de_fotos ");
         
-        Frame frame = new Frame();
-        frame.add(new Panel());
+       Frame frame = new Frame();
+        //frame.add(new Panel());
         frame.validate();
     }
 }

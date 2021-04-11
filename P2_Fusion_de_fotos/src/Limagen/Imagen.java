@@ -56,7 +56,6 @@ public class Imagen {
 
     public Imagen(Imagen img1, Imagen img2) {
         observed = new PropertyChangeSupport(this);
-        // this.file = new File("img/imgResultante-" + new Date().toString() + ".png");
 
         Pixel[][] pixels1 = img1.getPixels();
         Pixel[][] pixels2 = img2.getPixels();
@@ -94,16 +93,21 @@ public class Imagen {
     }
 
     public void toPixeles() {
-        width = bufferedImage.getWidth();
-        height = bufferedImage.getHeight();
-        pixels = new Pixel[height][width];
-        for (int y = 0; y < bufferedImage.getHeight(); y++) {
-            for (int x = 0; x < bufferedImage.getWidth(); x++) {
-                Pixel p = new Pixel(bufferedImage.getRGB(x, y));
-                pixels[y][x] = p;
+        try {
+            width = bufferedImage.getWidth();
+            height = bufferedImage.getHeight();
+            pixels = new Pixel[height][width];
+            for (int y = 0; y < bufferedImage.getHeight(); y++) {
+                for (int x = 0; x < bufferedImage.getWidth(); x++) {
+                    Pixel p = new Pixel(bufferedImage.getRGB(x, y));
+                    pixels[y][x] = p;
+                }
             }
+            cambioOk();
+        } catch (Exception e) {
+            log.error("error por imagen de distinto tamaño");
         }
-        cambioOk();
+
     }
 
     public Pixel[][] getPixels() {
