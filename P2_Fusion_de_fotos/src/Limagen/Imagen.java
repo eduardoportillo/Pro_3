@@ -9,6 +9,7 @@ import java.beans.PropertyChangeSupport;
 import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,6 +41,7 @@ public class Imagen {
             // toPixeles();
         } catch (Exception e) {
             log.error("Error al cambiar a buffered linea 38 ");
+            JOptionPane.showMessageDialog(null, "Error al cambiar a buffered linea 38 ");
         }
     }
 
@@ -51,6 +53,7 @@ public class Imagen {
             // toPixeles();
         } catch (Exception e) {
             log.error("Error al cambiar a buffered 49");
+            JOptionPane.showMessageDialog(null, "Error al cambiar a buffered 49");
         }
     }
 
@@ -87,7 +90,8 @@ public class Imagen {
             this.bufferedImage = image;
 
         } catch (Exception e) {
-            log.error("Las imagenes no son del mismo tamaño Introdusca otra");
+            log.error("Las imagenes no son del mismo tamaño Introduzca otra");
+            JOptionPane.showMessageDialog(null, "Las imagenes no son del mismo tamaño Introduzca otra");
         }
 
     }
@@ -123,13 +127,18 @@ public class Imagen {
     }
 
     public void paint(Graphics g, int _x, int _y) {
-        int tamnho = 1;
-        for (int y = 0; y < this.pixels.length; y++) {
-            for (int x = 0; x < this.pixels[0].length; x++) {
-                Pixel pTemp = this.pixels[y][x];
-                g.setColor(pTemp.getColor());
-                g.fillRect(_x + (x * tamnho), _y + (y * tamnho), tamnho, tamnho);
+        try {
+            int tamnho = 1;
+            for (int y = 0; y < this.pixels.length; y++) {
+                for (int x = 0; x < this.pixels[0].length; x++) {
+                    Pixel pTemp = this.pixels[y][x];
+                    g.setColor(pTemp.getColor());
+                    g.fillRect(_x + (x * tamnho), _y + (y * tamnho), tamnho, tamnho);
+                }
             }
+        } catch (Exception e) {
+            log.error(e);
         }
+
     }
 }

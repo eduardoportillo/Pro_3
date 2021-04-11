@@ -25,7 +25,7 @@ public class Frame extends JFrame {
 
     private void init() {
         instance = this;
-        this.setSize(895, 585);
+        this.setSize(900, 650);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -125,6 +125,16 @@ public class Frame extends JFrame {
                 panel.setImg2(null);
                 panel.setImg3(null);
                 instance.repaint();
+            }
+        });
+        
+        Acercade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               String acercaDe = "¿Como funciona?\n"
+                                + " Inroduce 2 Imagenes y oprime generar, se imprimira una imagen en la cual sale 1/3 de la primera, "
+                                + "1/3 de la mezcla de las 2 imagens y 1/3 de la segunda imagen"; 
+               JOptionPane.showMessageDialog(null, acercaDe);
             }
         });
     }
