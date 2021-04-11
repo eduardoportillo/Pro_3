@@ -1,7 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import view.Frame;
-import view.Panel;
 
 
 public class Main {
@@ -13,7 +12,6 @@ public class Main {
         log.info("inicia: P2_Fusion_de_fotos ");
         
        Frame frame = new Frame();
-        //frame.add(new Panel());
         frame.validate();
     }
 }
