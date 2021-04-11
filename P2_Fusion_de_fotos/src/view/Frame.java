@@ -13,40 +13,59 @@ import org.apache.logging.log4j.Logger;
 
 public class Frame extends JFrame {
 
-    private Panel instance;
+    private Frame instance;
     private static final Logger log = LogManager.getRootLogger();
 
     Panel panel = new Panel();
 
     public Frame() {
-        this.setSize(895, 585); // Tamanho del frame
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // Para cerrar la ventana en close
-        this.setLocationRelativeTo(null); // Para habrir el frame al medio
+        init();
+        crearMenu();
+    }
+
+    private void init() {
+        instance = this;
+        this.setSize(895, 585);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setTitle("Imagenes");
         this.setResizable(false);
         this.repaint();
         this.add(panel);
-        crearMenu();
     }
 
     private void crearMenu() {
         JMenuBar barra = new JMenuBar();
-        JMenu File = new JMenu("File");
-        JMenu Help = new JMenu("Help");
+
+        JMenu file = new JMenu("File");
+        JMenu help = new JMenu("Help");
+
         JMenuItem img1 = new JMenuItem("Insertar img 1");
         JMenuItem img2 = new JMenuItem("Insertar img 2");
         JMenuItem generar = new JMenuItem("Generar");
+        JMenuItem reset = new JMenuItem("Reset");
+        JMenuItem exit = new JMenuItem("salir");
+
         JMenuItem Acercade = new JMenuItem("Acerca de");
-        barra.add(File);
-        barra.add(Help);
-        File.add(img1);
-        File.add(img2);
-        File.add(generar);
-        Help.add(Acercade);
+
+        barra.add(file);
+        barra.add(help);
+
+        file.add(img1);
+        file.add(img2);
+        file.add(generar);
+        file.add(reset);
+        file.add(exit);
+
+        help.add(Acercade);
         setJMenuBar(barra);
 
-        //Logica items menu
+        logicaItemMenuPanel(img1, img2, generar);
+        logicaItemsExtra(exit, reset, Acercade);
+    }
+
+    private void logicaItemMenuPanel(JMenuItem img1, JMenuItem img2, JMenuItem generar) {
         img1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +81,7 @@ public class Frame extends JFrame {
                 log.info("se introduce img1");
             }
         });
-                
+
         img2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,7 +97,7 @@ public class Frame extends JFrame {
                 log.info("se introduce img");
             }
         });
-        
+
         generar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,6 +105,26 @@ public class Frame extends JFrame {
                 panel.getImg3().addObserver(panel);
                 panel.getImg3().toPixeles();
                 log.info("se genera img3");
+            }
+        });
+    }
+
+    private void logicaItemsExtra(JMenuItem exit, JMenuItem reset, JMenuItem Acercade) {
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setImg1(null);
+                panel.setImg2(null);
+                panel.setImg3(null);
+                instance.repaint();
             }
         });
     }
