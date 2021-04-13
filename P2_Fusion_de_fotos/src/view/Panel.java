@@ -13,15 +13,12 @@ public class Panel extends JPanel implements PropertyChangeListener {
     private Imagen img1;
     private Imagen img2;
     private Imagen img3;
-    
-    private Panel instance;
 
     public Panel() {
         init();
     }
     
     private void init(){
-        instance = this;
         this.setBounds(1000, 600, 0, 0);
         this.setLayout(null);
 

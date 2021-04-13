@@ -1,4 +1,4 @@
-package Image;
+package Limagen;
 
 import java.awt.Color;
 
@@ -34,10 +34,11 @@ public class Pixel {
         int rojo = this.red << 16 & 0x00FF0000;
         int verde = this.green << 8 & 0x0000FF00;
         int azul = this.blue & 0x000000FF;
-        int c = alpha | rojo | verde | azul;
+        int c = alpha + rojo + verde + azul;
         this.colorInt = c;
         return c;
     }
+    
     public Color getColor() {
         return color;
     }

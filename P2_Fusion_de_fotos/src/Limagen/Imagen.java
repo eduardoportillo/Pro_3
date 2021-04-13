@@ -1,6 +1,6 @@
 package Limagen;
 
-import Image.Pixel;
+import Limagen.Pixel;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeListener;
@@ -29,28 +29,13 @@ public class Imagen {
         observed.addPropertyChangeListener(panel);
     }
 
-    public void cambioOk() {
-        observed.firePropertyChange("Imagen", 1, 2);
-    }
 
-    public Imagen(String URL) {
-        observed = new PropertyChangeSupport(this);
-        this.file = new File(URL);
-        try {
-            this.bufferedImage = ImageIO.read(this.file);
-            // toPixeles();
-        } catch (Exception e) {
-            log.error("Error al cambiar a buffered linea 38 ");
-            JOptionPane.showMessageDialog(null, "Error al cambiar a buffered linea 38 ");
-        }
-    }
 
     public Imagen(File _file) {
         observed = new PropertyChangeSupport(this);
         this.file = _file;
         try {
             this.bufferedImage = ImageIO.read(this.file);
-            // toPixeles();
         } catch (Exception e) {
             log.error("Error al cambiar a buffered 49");
             JOptionPane.showMessageDialog(null, "Error al cambiar a buffered 49");
@@ -107,7 +92,6 @@ public class Imagen {
                     pixels[y][x] = p;
                 }
             }
-            cambioOk();
         } catch (Exception e) {
             log.error("error por imagen de distinto tamaño");
         }
@@ -128,12 +112,12 @@ public class Imagen {
 
     public void paint(Graphics g, int _x, int _y) {
         try {
-            int tamnho = 1;
+            int size = 1;
             for (int y = 0; y < this.pixels.length; y++) {
                 for (int x = 0; x < this.pixels[0].length; x++) {
                     Pixel pTemp = this.pixels[y][x];
                     g.setColor(pTemp.getColor());
-                    g.fillRect(_x + (x * tamnho), _y + (y * tamnho), tamnho, tamnho);
+                    g.fillRect(_x + (x * size), _y + (y * size), size, size);
                 }
             }
         } catch (Exception e) {
